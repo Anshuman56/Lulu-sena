@@ -46,6 +46,68 @@ nav {
 .hero-bg svg {
   position: absolute; right: -60px; top: 50%; transform: translateY(-50%);
   width: 70vmin; height: 70vmin; opacity: .07;
+  z-index: 1;
+}
+
+/* ── HERO CAROUSEL ── */
+.hero-carousel { position: absolute; inset: 0; z-index: 0; }
+.hero-slide {
+  position: absolute; inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transform: scale(1.06);
+  transition: opacity 1.2s ease-in-out, transform 8s ease-out;
+  will-change: opacity, transform;
+}
+.hero-slide.is-active {
+  opacity: 1;
+  transform: scale(1);
+}
+.hero-slide-1 {
+  background-image:
+    radial-gradient(circle at 30% 40%, rgba(255,153,51,.4), transparent 60%),
+    linear-gradient(135deg, rgba(26,35,126,.55) 0%, rgba(42,58,158,.45) 50%, rgba(26,35,126,.6) 100%),
+    url('uploads/001.jpg');
+}
+.hero-slide-2 {
+  background-image:
+    radial-gradient(circle at 70% 60%, rgba(19,136,8,.32), transparent 60%),
+    linear-gradient(135deg, #14207a 0%, #1e3a8a 50%, #0d1660 100%);
+}
+.hero-slide-3 {
+  background-image:
+    radial-gradient(circle at 50% 30%, rgba(255,255,255,.22), transparent 55%),
+    linear-gradient(135deg, #1a237e 0%, #4a3a9a 50%, #1a237e 100%);
+}
+.hero-slide-4 {
+  background-image:
+    radial-gradient(circle at 20% 70%, rgba(255,153,51,.3), transparent 55%),
+    radial-gradient(circle at 80% 30%, rgba(19,136,8,.25), transparent 55%),
+    linear-gradient(135deg, #0d1660 0%, #1a237e 50%, #2a3a9e 100%);
+}
+
+.hero-carousel-dots {
+  position: absolute; z-index: 4;
+  left: 50%; transform: translateX(-50%);
+  bottom: clamp(1rem, 2.5vw, 2rem);
+  display: flex; gap: .55rem;
+}
+.hero-carousel-dots button {
+  width: 32px; height: 4px;
+  background: rgba(255,255,255,.3);
+  border: none; border-radius: 2px;
+  cursor: pointer; padding: 0;
+  transition: background .25s, width .25s;
+}
+.hero-carousel-dots button:hover { background: rgba(255,255,255,.55); }
+.hero-carousel-dots button.is-active {
+  background: #FF9933; width: 48px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide { transition: opacity .2s; transform: none; }
+  .hero-slide.is-active { transform: none; }
 }
 .hero-bg::after {
   content: '';
